@@ -4,19 +4,7 @@ To automate transactions in the Catton game, our bot interacts with the Monad Te
 
 How to Retrieve LOGIN_AUTH
 
-Open DevTools (F12 or Ctrl+Shift+I in most browsers).
-
-Navigate to the Network tab and filter requests (XHR or Fetch).
-
-Look for login or authentication-related requests.
-
-Extract LOGIN_AUTH Token:
-
-Click on a request that includes authentication data.
-
-Check the Headers and Response sections.
-
-Locate LOGIN_AUTH, typically found in authorization headers, or response payloads.
+Open DevTools (F12 or Ctrl+Shift+I in most browsers). Locate LOGIN_AUTH, typically found in authorization headers, or response payloads.
 
 [![Watch the video](https://img.youtube.com/vi/WlXSjO1HsCI/maxresdefault.jpg)](https://www.youtube.com/watch?v=WlXSjO1HsCI)
 
