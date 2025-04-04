@@ -15,7 +15,7 @@ COMPLETE_API = "/game-config/h2o_heroes/finish_level"
 INFO_API = "/game-config/h2o_heroes/user_info"
 GEM_PURCHASE_API = "game-config/h2o_heroes/purchase_ticket_by_gem"
 RPC_URL= "https://testnet-rpc.monad.xyz"
-accessToken = ""
+accessToken = os.getenv("LOGIN_AUTH")
 buyInProcess = False
 MONAD_CONTRACT_ADDRESS = "0xd79662985f1ba7B5aEe59372c964feb95FcDC08A"
 
