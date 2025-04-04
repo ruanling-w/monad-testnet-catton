@@ -180,7 +180,7 @@ def main():
         time.sleep(2)
         # buy ticket by gem
         #purchase_ticket_by_gem()
-        time.sleep(2)
+        #time.sleep(2)
 
 if __name__ == "__main__":
     main()
