@@ -13,7 +13,6 @@ BASE_API = "https://api.catton.tech/api"
 TICKET_API = "/game-config/h2o_heroes/purchase_ticket"
 COMPLETE_API = "/game-config/h2o_heroes/finish_level"
 INFO_API = "/game-config/h2o_heroes/user_info"
-GEM_PURCHASE_API = "game-config/h2o_heroes/purchase_ticket_by_gem"
 RPC_URL= "https://testnet-rpc.monad.xyz"
 accessToken = os.getenv("LOGIN_AUTH")
 buyInProcess = False
