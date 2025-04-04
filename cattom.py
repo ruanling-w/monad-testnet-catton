@@ -154,7 +154,7 @@ def buy_ticket_and_sign():
     tx = contract.functions.buy(player_id, pack_id).build_transaction({
         'from': wallet.address,
         'value': Web3.to_wei(str(price), 'ether'),
-        'gas': 150000,
+        'gas': 200000,
         'nonce': nonce,
         'gasPrice': web3.eth.gas_price
     })
