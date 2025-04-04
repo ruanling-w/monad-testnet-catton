@@ -50,72 +50,6 @@ def check_verified_pack():
     except Exception as e:
         print(f"Error in check_verified_pack: {e}")
 
-def wait_for_ticket():
-    global accessToken
-    while True:
-        response = requests.get(f"{BASE_API}{INFO_API}", headers={"Authorization": accessToken})
-        info = response.json()
-        
-        try:
-            ticket = info['result']['data']['tickets']
-            print(f"Current tickets: {ticket}")
-            
-            if ticket > 0:
-                print("✅ Ticket available! Proceeding...")
-                break  
-            
-        except KeyError:
-            print("❌ Error: Invalid response format!")
-        
-        print("⏳ Waiting for tickets to be available...")
-        time.sleep(5) 
-
-def request_login():
-    global accessToken
-    try:
-        login_data = {
-            "auth": None,
-            "invite_id": 0,
-            "is_premium": False,
-            "avatar_url": None
-        }
-        response = requests.post(f"{BASE_API}/users/login_tele_tg_data", json=login_data, headers={"Auth": os.getenv("LOGIN_AUTH")})
-        login = response.json()
-        accessToken = f"Bearer {login['result']['accessToken']}"
-        print("Login successful. Access token updated.")
-    except Exception as e:
-        print(f"Error in request_login: {e}")
-
-def purchase_ticket_by_gem():
-    global accessToken
-    try:
-        response = requests.get(f"{BASE_API}/user-stat", headers={"Authorization": accessToken})
-        user_stat = response.json()
-        gem = user_stat['result']['gem']
-        if gem >= 200:
-            purchase_response = requests.post(
-                f"{BASE_API}{GEM_PURCHASE_API}",
-                json={"pack_id": 0},
-                headers={"Authorization": accessToken}
-            )
-
-            if purchase_response.status_code == 200:
-                print("==========PURCHASE BY GEM SUCCESS==========")
-                print(f"==========CURRENT {gem - 200} GEM==========")
-            else:
-                print(f"Error in purchase_ticket_by_gem: HTTP {purchase_response.status_code}")
-                print(f"Response: {purchase_response.text}")
-        else:
-            print("Not enough gems to purchase a ticket.")
-    except requests.exceptions.RequestException as e:
-        print(f"Request error in purchase_ticket_by_gem: {e}")
-    except Exception as e:
-        print(f"Error in purchase_ticket_by_gem: {e}")
-
-
-web3 = Web3(Web3.HTTPProvider(RPC_URL))
-wallet = Account.from_key(os.getenv("private_key"))
-
 def buy_ticket_and_sign():
     global accessToken, buyInProcess, index
     if not accessToken:
@@ -178,9 +112,6 @@ def main():
         # buy ticket by monad
         buy_ticket_and_sign()
         time.sleep(2)
-        # buy ticket by gem
-        #purchase_ticket_by_gem()
-        #time.sleep(2)
 
 if __name__ == "__main__":
     main()
